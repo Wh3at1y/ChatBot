@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Base version of the 2015 Chatbot class. Only stub methods are provided. Students will complete methods as part
  * of the project.
  * @author Sam Montoya
- * @version 1.0 10/14/15
+ * @version 1.1 10/14/15 - Completed the lengthChecker method.
  */
 public class Chatbot
 {
@@ -42,7 +42,16 @@ public class Chatbot
 	 */
 	public boolean lengthChecker(String currentInput)
 	{
-		return false;
+		boolean hasLength = false;
+		
+		if(currentInput != null)
+		{
+			if(currentInput.length() > 0)
+			{
+				hasLength = true;
+			}
+		}
+		return hasLength;
 	}
 	
 	/**
