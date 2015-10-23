@@ -21,7 +21,7 @@ public class Chatbot
 	 */
 	public Chatbot(String userName)
 	{
-		
+		this.userName = userName;
 	}
 	
 	private void buildMemesList()
@@ -46,7 +46,7 @@ public class Chatbot
 		
 		if(currentInput != null)
 		{
-			if(currentInput.length() > 0)
+			if(currentInput.length() >= 1)
 			{
 				hasLength = true;
 			}
@@ -92,7 +92,7 @@ public class Chatbot
 	 */
 	public String getUserName()
 	{
-		return null;
+		return userName;
 	}
 	
 	/**
