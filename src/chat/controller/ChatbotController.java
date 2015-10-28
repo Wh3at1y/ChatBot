@@ -37,8 +37,12 @@ public class ChatbotController
 		
 		while(myBot.lengthChecker(textFromUser))
 		{
-			textFromUser = chatDisplay.getUserInput("");
+			if(myBot.contentChecker(textFromUser))
+			{
+				chatDisplay.showText("Wow, I had no idea you loved " + myBot.getContent());
+			}
 		}
+		textFromUser = chatDisplay.getUserInput(textFromUser);
 	
 	}
 }

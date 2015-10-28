@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Base version of the 2015 Chatbot class. Only stub methods are provided. Students will complete methods as part
  * of the project.
  * @author Sam Montoya
- * @version 1.1 10/14/15 - Completed the lengthChecker method.
+ * @version 1.3 10/14/15 - Built and called the buildMemesList method. Updated and completed the contentChecker method.
  */
 public class Chatbot
 {
@@ -25,11 +25,16 @@ public class Chatbot
 		this.content = "CSGO";
 		this.memesList = new ArrayList<String>();
 		this.politicalTopicList = new ArrayList<String>();
+		
+		buildMemesList();
 	}
 	
 	private void buildMemesList()
 	{
-		
+		this.memesList.add("cute animals");
+		this.memesList.add("doge");
+		this.memesList.add("grumpy cat");
+		this.memesList.add("bad luck brian");
 	}
 	
 	private void buildPoliticalTopicsList()
@@ -64,7 +69,13 @@ public class Chatbot
 	 */
 	public boolean contentChecker(String currentInput)
 	{
-		return false;
+		boolean hasContent = false;
+			if(currentInput.toLowerCase().contains(content.toLowerCase()))
+			{
+				hasContent = true;
+			}
+			
+		return hasContent;
 	}
 	
 	/**
@@ -104,7 +115,7 @@ public class Chatbot
 	 */
 	public String getContent()
 	{
-		return null;
+		return content;
 	}
 	
 	/**
