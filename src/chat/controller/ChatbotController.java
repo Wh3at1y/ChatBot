@@ -41,6 +41,10 @@ public class ChatbotController
 			{
 				chatDisplay.showText("Wow, I had no idea you loved " + myBot.getContent());
 			}
+			else if(myBot.memeChecker(textFromUser))
+			{
+				chatDisplay.showText("You know memememes");
+			}
 		}
 		textFromUser = chatDisplay.getUserInput(textFromUser);
 	
