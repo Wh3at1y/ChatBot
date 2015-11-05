@@ -110,6 +110,47 @@ public class Chatbot
 		return hasMeme;
 	}
 	
+	public String processConverstation(String currentInput)
+	{
+		String nextConversation = "Oh, what else would you like to talk about?";
+		int randomTopic = (int) (Math.random() * 5); // generates a random number between 0 and 4
+		
+		switch (randomTopic)
+		{
+		case 0:
+			if(contentChecker(currentInput))
+			{
+				nextConversation = "You talked about my favorite game! What else do you like?";
+			}
+			break;
+		case 1:
+			if(memeChecker(currentInput))
+			{
+				nextConversation = "You know memes pretty well. What fast food do you like?";
+			}
+			break;
+		case 2:
+			if(politicalTopicChecker(currentInput))
+			{
+				nextConversation = "comment and question";
+			}
+			break;
+		case 3:
+			if(currentInput.length() > 23)
+			{
+				
+			}
+			break;
+		case 4:
+			break;
+			
+			//default means the else in an if-else statement. Only happens if nothing else works.
+		default:
+			break;
+		}
+		
+		return nextConversation;
+	}
 	/**
 	 * Returns the username of this Chatbot instance.
 	 * @return The username of the Chatbot.
