@@ -15,26 +15,17 @@ import javax.swing.ImageIcon;
 
 public class ChatbotDisplay
 {
-<<<<<<< HEAD
-=======
-	
->>>>>>> Adding-icon-to-popup
+
 	private String windowMessage;
 	private ImageIcon chatIcon;
 	
 	public ChatbotDisplay()
 	{
-<<<<<<< HEAD
 		windowMessage = "Stupid Chatbot message";
 		chatIcon = new ImageIcon(getClass().getResource("images/WorldIcon.png"));
 		
 	}
-	
-=======
-		windowMessage = "Stupid Chatbot";
-		chatIcon = new ImageIcon(getClass().getResource("images/WorldIcon.png"));
-	}
->>>>>>> Adding-icon-to-popup
+
 	/**
 	 * Displays text and asks for a user input.
 	 * @param displayText : Shows what is printed to the screen.
