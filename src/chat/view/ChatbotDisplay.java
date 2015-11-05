@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 /**
  * Grabs user inputs and displays text to the screen.
  * @author Sam Montoya
- * @version 1.2 Added icon to input window
+ * @version 1.2 Added icon to input window and displayText method
  */
 
 public class ChatbotDisplay
@@ -27,7 +27,9 @@ public class ChatbotDisplay
 	 */
 	public String getUserInput(String displayText)
 		{
-			String answer = JOptionPane.showInputDialog(null, displayText, windowMessage, JOptionPane.INFORMATION_MESSAGE, chatIcon, null, "").toString();
+			String answer = JOptionPane.showInputDialog(null, displayText, windowMessage, 
+														JOptionPane.INFORMATION_MESSAGE, 
+														chatIcon, null, "").toString();
 			return answer;
 		}
 	
@@ -36,5 +38,5 @@ public class ChatbotDisplay
 	 * @param displayText : Shows what is printed to the screen.
 	 */
 	public void showText(String displayText)
-		{ JOptionPane.showMessageDialog(null, displayText); }
+		{ JOptionPane.showMessageDialog(null, displayText, windowMessage, JOptionPane.PLAIN_MESSAGE, chatIcon); }
 }
