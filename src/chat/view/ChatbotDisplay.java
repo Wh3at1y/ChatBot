@@ -6,11 +6,8 @@ import javax.swing.ImageIcon;
 /**
  * Grabs user inputs and displays text to the screen.
  * @author Sam Montoya
-<<<<<<< HEAD
  * @version 1.1 10/21/15 : Added the icon location
-=======
  * @version 1.2 Added icon to input window and displayText method
->>>>>>> Adding-icon-to-popup
  */
 
 public class ChatbotDisplay

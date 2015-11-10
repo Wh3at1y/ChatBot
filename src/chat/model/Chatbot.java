@@ -132,13 +132,13 @@ public class Chatbot
 		case 2:
 			if(politicalTopicChecker(currentInput))
 			{
-				nextConversation = "comment and question";
+				nextConversation = "You like Trump Donalds? Same!";
 			}
 			break;
 		case 3:
-			if(currentInput.length() > 23)
+			if(currentInput.equalsIgnoreCase("hi"))
 			{
-				
+				nextConversation = "Hello there!";
 			}
 			break;
 		case 4:
