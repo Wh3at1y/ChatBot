@@ -27,6 +27,7 @@ public class Chatbot
 		this.politicalTopicList = new ArrayList<String>();
 		
 		buildMemesList();
+		buildPoliticalTopicsList();
 	}
 	
 	private void buildMemesList()
@@ -35,6 +36,13 @@ public class Chatbot
 		this.memesList.add("doge");
 		this.memesList.add("grumpy cat");
 		this.memesList.add("bad luck brian");
+		this.memesList.add("pepe");
+		this.memesList.add("trolling");
+		this.memesList.add("nian cat");
+		this.memesList.add("john cena");
+		this.memesList.add("meme");
+		this.memesList.add("inception");
+		
 	}
 	
 	private void buildPoliticalTopicsList()
@@ -47,10 +55,10 @@ public class Chatbot
 		this.politicalTopicList.add("Fiorina");
 		this.politicalTopicList.add("Sanders");
 		this.politicalTopicList.add("vote");
-		this.politicalTopicList.add("11/8/2016");
+		this.politicalTopicList.add("11/4/16");
 		this.politicalTopicList.add("election");
-		this.politicalTopicList.add("democrat");
-		this.politicalTopicList.add("republican");
+		this.politicalTopicList.add("Democrat");
+		this.politicalTopicList.add("Republican");
 		this.politicalTopicList.add("liberal");
 		this.politicalTopicList.add("convervative");
 		
@@ -189,7 +197,7 @@ public class Chatbot
 	 */
 	public ArrayList<String> getMemesList()
 	{
-		return null;
+		return memesList;
 	}
 	
 	/**
@@ -198,7 +206,7 @@ public class Chatbot
 	 */
 	public ArrayList<String> getPoliticalTopicList()
 	{
-		return null;
+		return politicalTopicList;
 	}
 	
 	/**
@@ -208,5 +216,16 @@ public class Chatbot
 	public void setContent(String content)
 	{
 		
+	}
+	
+	public boolean quitChecker(String currentInput)
+	{
+		boolean quitCheck = false;
+		return quitCheck;
+	}
+	
+	public boolean keyboardMashChecker(String currentInput)
+	{
+		return true;
 	}
 }

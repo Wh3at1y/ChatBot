@@ -10,13 +10,13 @@ import javax.swing.ImageIcon;
  * @version 1.2 Added icon to input window and displayText method
  */
 
-public class ChatbotDisplay
+public class ChatView
 {
 
 	private String windowMessage;
 	private ImageIcon chatIcon;
 	
-	public ChatbotDisplay()
+	public ChatView()
 	{
 		windowMessage = "Stupid Chatbot message";
 		chatIcon = new ImageIcon(getClass().getResource("images/WorldIcon.png"));

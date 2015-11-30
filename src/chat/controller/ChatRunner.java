@@ -6,8 +6,8 @@ package chat.controller;
  * @version1.0 10/20/15
  */
 
-public class ChatbotRunner
+public class ChatRunner
 {
 	public static void main(String[]args)
-	{	ChatbotController startController = new ChatbotController(); startController.start(); }
+	{	ChatController startController = new ChatController(); startController.start(); }
 }

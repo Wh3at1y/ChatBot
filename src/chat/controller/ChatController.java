@@ -1,7 +1,9 @@
 package chat.controller;
 
-import chat.view.ChatbotDisplay;
+import chat.view.ChatView;
 import chat.model.Chatbot;
+import chat.tests.*;
+import chat.view.*;
 
 /**
  * Controller for the ChatBot project.
@@ -9,18 +11,24 @@ import chat.model.Chatbot;
  * @version 1.3 10/23/15 : Asks the user to talk to the chatbot in a while loop.
  */
 
-public class ChatbotController
+public class ChatController
 {
-	private ChatbotDisplay chatDisplay;
+	private ChatView chatDisplay;
 	private Chatbot myBot;
+	private ChatFrame GUIFrame;
 	
-	public ChatbotController()
+	private ChatView myView;
+	
+	public ChatController()
 	{	
-		chatDisplay = new ChatbotDisplay();
+		chatDisplay = new ChatView();
+		GUIFrame = new ChatFrame(this);
 		String userName = chatDisplay.getUserInput("What is your name?");
 		
 		//Puts userName into the Chatbot constructer.
 		myBot = new Chatbot(userName);
+		
+		myView = new ChatView();
 	}
 	
 	public void start()
@@ -48,5 +56,20 @@ public class ChatbotController
 		}
 		textFromUser = chatDisplay.getUserInput(textFromUser);
 	
+	}
+	
+	public ChatView getChatView()
+	{
+		return myView;
+	}
+	
+	public Chatbot getChatbot()
+	{
+		return myBot;
+	}
+	
+	public ChatFrame getBaseFrame()
+	{
+		return GUIFrame;
 	}
 }
