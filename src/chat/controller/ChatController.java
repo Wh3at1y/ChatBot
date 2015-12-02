@@ -17,18 +17,14 @@ public class ChatController
 	private Chatbot myBot;
 	private ChatFrame GUIFrame;
 	
-	private ChatView myView;
-	
 	public ChatController()
 	{	
 		chatDisplay = new ChatView();
 		GUIFrame = new ChatFrame(this);
-		String userName = chatDisplay.getUserInput("What is your name?");
 		
 		//Puts userName into the Chatbot constructer.
+		String userName = chatDisplay.getUserInput("What is your name?");
 		myBot = new Chatbot(userName);
-		
-		myView = new ChatView();
 	}
 	
 	public void start()
@@ -45,22 +41,33 @@ public class ChatController
 		
 		while(myBot.lengthChecker(textFromUser))
 		{
-			if(myBot.contentChecker(textFromUser))
-			{
-				chatDisplay.showText("Wow, I had no idea you loved " + myBot.getContent());
-			}
-			else if(myBot.memeChecker(textFromUser))
-			{
-				chatDisplay.showText("You know memememes");
-			}
+			textFromUser = myBot.processConverstation(textFromUser);
+			textFromUser = chatDisplay.getUserInput(textFromUser);
 		}
-		textFromUser = chatDisplay.getUserInput(textFromUser);
+	}
 	
+	public String fromUserToChatbot(String conversation)
+	{
+		String botResponse = "";
+		
+		if(myBot.quitChecker(conversation))
+		{
+			shutdown();
+		}
+		
+		botResponse = myBot.processConverstation(conversation);
+		return botResponse;
+	}
+	
+	private void shutdown()
+	{
+		chatDisplay.showText("Goodbye, " + myBot.getUserName() + " it has been a good time!");
+		System.exit(0);
 	}
 	
 	public ChatView getChatView()
 	{
-		return myView;
+		return chatDisplay;
 	}
 	
 	public Chatbot getChatbot()

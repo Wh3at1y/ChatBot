@@ -108,7 +108,17 @@ public class Chatbot
 	 */
 	public boolean politicalTopicChecker(String currentInput)
 	{
-		return false;
+		boolean hasPolitical = false;
+		
+		for(String political: politicalTopicList)
+		{
+			if(currentInput.toLowerCase().contains(political.toLowerCase()))
+			{
+				hasPolitical = true;
+			}
+		}
+		
+		return hasPolitical;
 	}
 	
 	
@@ -137,6 +147,10 @@ public class Chatbot
 		String nextConversation = "Oh, what else would you like to talk about?";
 		int randomTopic = (int) (Math.random() * 5); // generates a random number between 0 and 4
 		
+		if(keyboardMashChecker(currentInput))
+		{
+			return "Stop just pressing keys n' stuff, kay?";
+		}
 		switch (randomTopic)
 		{
 		case 0:
@@ -215,17 +229,27 @@ public class Chatbot
 	 */
 	public void setContent(String content)
 	{
-		
+		this.content = content;
 	}
 	
 	public boolean quitChecker(String currentInput)
 	{
 		boolean quitCheck = false;
+		
+		if(currentInput.equalsIgnoreCase("quit"))
+		{
+			quitCheck = true;
+		}
 		return quitCheck;
 	}
 	
 	public boolean keyboardMashChecker(String currentInput)
 	{
-		return true;
+		boolean isMash = false;
+		if(currentInput.equalsIgnoreCase("sdf") || currentInput.equalsIgnoreCase("dfg") || currentInput.equalsIgnoreCase("cvb") || currentInput.equalsIgnoreCase(",./"))
+		{
+			isMash = true;
+		}
+		return isMash;
 	}
 }
