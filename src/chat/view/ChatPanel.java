@@ -36,6 +36,7 @@ public class ChatPanel extends JPanel
 
 	private void setupPanel()
 	{
+		//Adds objects into the panel
 		this.setLayout(baseLayout);
 		this.setBackground(Color.BLUE);
 		this.add(chatArea);
@@ -59,6 +60,7 @@ public class ChatPanel extends JPanel
 	
 	private void setupListeners()
 	{
+		//Sets up the listeners
 		submitButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
@@ -71,7 +73,10 @@ public class ChatPanel extends JPanel
 			}
 		});
 	}
-	
+	/**
+	 * Returns what is inside the TextField
+	 * @return	Returns the contents inside
+	 */
 	public JTextField getTextField()
 	{
 		return typingField;

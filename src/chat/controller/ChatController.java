@@ -35,6 +35,9 @@ public class ChatController
 		chat();
 	}
 	
+	/**
+	 * Grabs the user input, and checks with the length checker
+	 */
 	private void chat()
 	{
 		String textFromUser = chatDisplay.getUserInput("Talk to the chatbot.");
@@ -46,6 +49,11 @@ public class ChatController
 		}
 	}
 	
+	/**
+	 * 
+	 * @param conversation gets the user input, and checks if they want to quit.
+	 * @return returns the bot response
+	 */
 	public String fromUserToChatbot(String conversation)
 	{
 		String botResponse = "";
@@ -59,6 +67,9 @@ public class ChatController
 		return botResponse;
 	}
 	
+	/**
+	 * Shows a pop up and exits the program
+	 */
 	private void shutdown()
 	{
 		chatDisplay.showText("Goodbye, " + myBot.getUserName() + " it has been a good time!");

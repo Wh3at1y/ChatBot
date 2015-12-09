@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
 
 public class ChatView
 {
-
+	//Declaration Section
 	private String windowMessage;
 	private ImageIcon chatIcon;
 	
