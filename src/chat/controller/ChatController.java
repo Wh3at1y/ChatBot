@@ -27,9 +27,9 @@ public class ChatController
 		myBot = new Chatbot(userName);
 	}
 	
+	//Uses the Getter and prints whatever is in the userName variable.
 	public void start()
 	{
-		//Uses the Getter and prints whatever is in the userName variable.
 		chatDisplay.showText("Hello " + myBot.getUserName());
 		
 		chat();

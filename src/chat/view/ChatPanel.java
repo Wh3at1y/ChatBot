@@ -7,6 +7,7 @@ import java.awt.event.*;
 
 public class ChatPanel extends JPanel
 {
+	//Declaration Section
 	private ChatController baseController;
 	private SpringLayout baseLayout;
 	private JButton submitButton;
@@ -16,27 +17,24 @@ public class ChatPanel extends JPanel
 	
 	public ChatPanel(ChatController baseController)
 	{
-		this.baseController = baseController;
-		baseLayout = new SpringLayout();
+		this.baseController = baseController; //instance of basecontroller
+		baseLayout = new SpringLayout();	//sets the layout for window builder
+		submitButton = new JButton("Submit your message.");	//adds a button with text
+		chatArea = new JTextArea(10, 20);	//Adds a chat area with the set size
+		typingField = new JTextField();	//Adds a text field
+		promptLabel = new JLabel();	//Adds the label
 		
-		submitButton = new JButton("Submit your message.");
-		
-		chatArea = new JTextArea(10, 20);
-		
-		typingField = new JTextField();
-		
-		
-		promptLabel = new JLabel();
-		
+		//calls methods from below
 		setupPanel();
 		setupLayout();
 		setupListeners();
 		
 	}
 
+	//Adds objects into the panel
 	private void setupPanel()
 	{
-		//Adds objects into the panel
+		
 		this.setLayout(baseLayout);
 		this.setBackground(Color.BLUE);
 		this.add(chatArea);
@@ -47,6 +45,7 @@ public class ChatPanel extends JPanel
 		typingField.setToolTipText("Type here for something");
 	}
 	
+	//Puts all the crap from WindowBuilder, into here.
 	private void setupLayout()
 	{
 		baseLayout.putConstraint(SpringLayout.NORTH, typingField, -1, SpringLayout.NORTH, submitButton);
@@ -58,9 +57,9 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.SOUTH, chatArea, -10, SpringLayout.SOUTH, this);
 	}
 	
+	//Sets up the listeners
 	private void setupListeners()
 	{
-		//Sets up the listeners
 		submitButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
@@ -73,6 +72,7 @@ public class ChatPanel extends JPanel
 			}
 		});
 	}
+	
 	/**
 	 * Returns what is inside the TextField
 	 * @return	Returns the contents inside

@@ -10,15 +10,15 @@ public class ChatFrame extends JFrame
 	
 	public ChatFrame(ChatController baseController)
 	{
-		this.baseController = baseController;
+		this.baseController = baseController; //instance for baseController
 		basePanel = new ChatPanel(baseController);
 		
-		setupFrame();
+		setupFrame();	//calls the method
 	}
 	
+	//This adds the content pane into base panel, and other parameters.
 	private void setupFrame()
 	{
-		//This adds the content pane into base panel, and other parameters.
 		this.setContentPane(basePanel);
 		this.setSize(500,400);
 		this.setTitle("Brettly's ChatBot");
