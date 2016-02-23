@@ -19,6 +19,7 @@ public class ChatFrame extends JFrame
 	//This adds the content pane into base panel, and other parameters.
 	private void setupFrame()
 	{
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setContentPane(basePanel);
 		this.setSize(500,400);
 		this.setTitle("Brettly's ChatBot");
