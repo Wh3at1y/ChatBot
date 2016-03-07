@@ -24,9 +24,6 @@ public class ChatPanel extends JPanel
 				baseLayout = new SpringLayout(); // sets the layout for window builder
 				submitButton = new JButton("Submit your message."); // adds a button with text
 				sendTweetButton = new JButton("Send Tweet");
-				baseLayout.putConstraint(SpringLayout.WEST, sendTweetButton, 10, SpringLayout.WEST, this);
-				baseLayout.putConstraint(SpringLayout.SOUTH, sendTweetButton, -10, SpringLayout.SOUTH, this);
-				baseLayout.putConstraint(SpringLayout.EAST, submitButton, -20, SpringLayout.EAST, this);
 				typingField = new JTextField(); // Adds a text field
 				promptLabel = new JLabel(); // Adds the label
 				typingField.setToolTipText("Type here for something");
@@ -72,6 +69,9 @@ public class ChatPanel extends JPanel
 				baseLayout.putConstraint(SpringLayout.SOUTH, chatArea, -10, SpringLayout.SOUTH, this);
 				baseLayout.putConstraint(SpringLayout.NORTH, textPane, 20, SpringLayout.SOUTH, submitButton);
 				baseLayout.putConstraint(SpringLayout.EAST, textPane, -20, SpringLayout.EAST, this);
+				baseLayout.putConstraint(SpringLayout.WEST, sendTweetButton, 10, SpringLayout.WEST, this);
+				baseLayout.putConstraint(SpringLayout.SOUTH, sendTweetButton, -10, SpringLayout.SOUTH, this);
+				baseLayout.putConstraint(SpringLayout.EAST, submitButton, -20, SpringLayout.EAST, this);
 			}
 
 		// Sets up the listeners
@@ -81,12 +81,20 @@ public class ChatPanel extends JPanel
 					{
 						public void actionPerformed(ActionEvent click)
 							{
-								String userText = typingField.getText(); // Grav user Text
+								String userText = typingField.getText(); // Grey user Text
 								String response = baseController.fromUserToChatbot(userText); // send the text to the controller
 								chatArea.append("\nUser: " + userText); // display users text
 								chatArea.append("\nChatbot: " + response); // display answer
 								typingField.setText(""); // clear user field
 							}
+					});
+				
+				sendTweetButton.addActionListener(new ActionListener()
+					{
+						public void actionPerformed(ActionEvent click)
+						{
+							baseController.sendTweet("StaticVoid_");
+						}
 					});
 			}
 
