@@ -4,6 +4,7 @@ import chat.view.ChatView;
 import chat.model.Chatbot;
 import chat.tests.*;
 import chat.view.*;
+import chat.model.CTECTwitter;
 
 /**
  * Controller for the ChatBot project.
@@ -16,9 +17,11 @@ public class ChatController
 	private ChatView chatDisplay;
 	private Chatbot myBot;
 	private ChatFrame GUIFrame;
+	private CTECTwitter myTwitter;
 	
 	public ChatController()
-	{	
+	{
+		myTwitter = new CTECTwitter(this);
 		chatDisplay = new ChatView();
 		GUIFrame = new ChatFrame(this);
 		
@@ -89,5 +92,15 @@ public class ChatController
 	public ChatFrame getBaseFrame()
 	{
 		return GUIFrame;
+	}
+
+	public void handleErrors(String error)
+	{
+		chatDisplay.showText(error);
+	}
+
+	public void sendTweet(String tweet)
+	{
+		myTwitter.sendTweet(tweet);
 	}
 }
