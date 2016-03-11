@@ -12,6 +12,7 @@ public class ChatPanel extends JPanel
 		private SpringLayout baseLayout;
 		private JButton submitButton;
 		private JButton sendTweetButton;
+		private JButton analyzeTwitterButton;
 		private JTextArea chatArea;
 		private JTextField typingField;
 		private JLabel promptLabel;
@@ -27,6 +28,7 @@ public class ChatPanel extends JPanel
 				typingField = new JTextField(); // Adds a text field
 				promptLabel = new JLabel(); // Adds the label
 				typingField.setToolTipText("Type here for something");
+				analyzeTwitterButton = new JButton("Analyze Twitter Button");
 				// calls methods from below
 				setupChatPane();
 				setupPanel();
@@ -56,6 +58,7 @@ public class ChatPanel extends JPanel
 				this.add(submitButton);
 				this.add(promptLabel);
 				this.add(sendTweetButton);
+				this.add(analyzeTwitterButton);
 			}
 
 		// Puts all the crap from WindowBuilder, into here.
@@ -96,7 +99,17 @@ public class ChatPanel extends JPanel
 							baseController.sendTweet("StaticVoid_");
 						}
 					});
-			}
+		
+		analyzeTwitterButton.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent click)
+				{
+					String user = typingField.getText();
+					//String results = baseController.analyze(user);
+					//chatArea.setText(results);
+				}
+			});
+		}
 
 		/**
 		 * Returns what is inside the TextField
