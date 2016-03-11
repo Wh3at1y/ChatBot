@@ -1,6 +1,6 @@
 package chat.model;
 
-import java.util.ArrayList;
+import java.util.*;
 import twitter4j.*;
 import chat.controller.ChatController;
 
@@ -31,5 +31,39 @@ public class CTECTwitter
 				{
 					baseController.handleErrors(error.getErrorMessage());
 				}
+		}
+		
+		public void loadTweets(String twitterHandle) throws TwitterException
+		{
+			Paging statusPage = new Paging(1,200);
+			int page = 1;
+			while(page <=10)
+				{
+					statusPage.setPage(page);
+					statusList.addAll(chatbotTwitter.getUserTimeline(twitterHandle, statusPage));
+					page++;
+				}
+			for(Status currentStatus : statusList)
+				{
+					String[] tweetText = currentStatus.getText().split(" ");
+					for(String word : tweetText)
+						{
+							wordsList.add(removePunctuation(word).toLowerCase());
+						}
+				}
+			removeCommonEnglishWords(wordsList);
+			removeEmptyText();
+		}
+		private void removeCommonEnglishWords(List<String> wordsList)
+		{
+			
+		}
+		private void removeEmptyText()
+		{
+			
+		}
+		private String removePunctuation(String currentString)
+		{
+			return null;
 		}
 	}
