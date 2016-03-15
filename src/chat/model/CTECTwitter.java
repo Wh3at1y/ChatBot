@@ -60,7 +60,14 @@ public class CTECTwitter
 		}
 		private void removeEmptyText()
 		{
-			
+			for(int spot = 0; spot < wordsList.size(); spot++)
+				{
+					if(wordsList.get(spot).equals(""))
+						{
+							wordsList.remove(spot);
+							spot--;
+						}
+				}
 		}
 		private String removePunctuation(String currentString)
 		{
