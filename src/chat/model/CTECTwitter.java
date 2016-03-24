@@ -35,6 +35,31 @@ public class CTECTwitter
 					}
 			}
 
+		public String sampleInvestigation(String currentString)
+			{
+				String results = "";
+				
+				Query query = new Query("Video Games");
+				query.setCount(100);
+				query.setGeoCode(new GeoLocation(40.587521, -111.869178), 5, Query.MILES);
+				query.setSince("2016-1-1");
+				try
+				{
+					QueryResult result = chatbotTwitter.search(query);
+					results.concat("Count : " + results.getTweets().size());
+					for(Status tweet : result.getTweets())
+						{
+							results.concat("@" + tweet.getUser().getName() + ": " + tweet.getText() + "\n");
+						}
+				}	
+				catch(TwitterException error)
+					{
+						error.printStackTrace();
+					}
+				return results;
+				
+			}
+		
 		public void loadTweets(String twitterHandle) throws TwitterException
 			{
 				Paging statusPage = new Paging(1, 200);
