@@ -56,7 +56,7 @@ public class CTECTwitter
 				removeCommonEnglishWords(wordsList);
 				removeEmptyText();
 			}
-		private String topResults()
+		public String topResults()
 		{
 			String tweetResults = "";
 			int topWordLocation = 0;
