@@ -46,10 +46,10 @@ public class CTECTwitter
 				try
 				{
 					QueryResult result = chatbotTwitter.search(query);
-					results.concat("Count : " + results.getTweets().size());
+					results += "Count : " + result.getTweets().size() + "\n";
 					for(Status tweet : result.getTweets())
 						{
-							results.concat("@" + tweet.getUser().getName() + ": " + tweet.getText() + "\n");
+							results += "@" + tweet.getUser().getName() + ": " + tweet.getText() + "\n";
 						}
 				}	
 				catch(TwitterException error)
@@ -136,7 +136,7 @@ public class CTECTwitter
 				return boringWords;	
 			}
 		
-		private List removeCommonEnglishWords(List<String> wordsList)
+		private List<String> removeCommonEnglishWords(List<String> wordsList)
 			{
 				String[] boringWords = importWordsToArray();
 				for (int count = 0; count < wordsList.size(); count++)

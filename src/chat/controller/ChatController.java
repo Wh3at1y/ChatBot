@@ -3,7 +3,6 @@ package chat.controller;
 import twitter4j.TwitterException;
 import chat.view.ChatView;
 import chat.model.Chatbot;
-import chat.tests.*;
 import chat.view.*;
 import chat.model.CTECTwitter;
 

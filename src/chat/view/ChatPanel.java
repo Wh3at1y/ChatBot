@@ -2,6 +2,7 @@ package chat.view;
 
 import java.awt.Color;
 import chat.controller.ChatController;
+import chat.controller.IOController;
 import javax.swing.*;
 import java.awt.event.*;
 
@@ -13,6 +14,8 @@ public class ChatPanel extends JPanel
 		private JButton submitButton;
 		private JButton sendTweetButton;
 		private JButton analyzeTwitterButton;
+		private JButton saveButton;
+		private JButton loadButton;
 		private JTextArea chatArea;
 		private JTextField typingField;
 		private JLabel promptLabel;
@@ -29,6 +32,9 @@ public class ChatPanel extends JPanel
 				promptLabel = new JLabel(); // Adds the label
 				typingField.setToolTipText("Type here for something");
 				analyzeTwitterButton = new JButton("Analyze Twitter Button");
+				saveButton = new JButton("Save");
+				loadButton = new JButton("Load");
+
 				// calls methods from below
 				setupChatPane();
 				setupPanel();
@@ -59,6 +65,8 @@ public class ChatPanel extends JPanel
 				this.add(promptLabel);
 				this.add(sendTweetButton);
 				this.add(analyzeTwitterButton);
+				this.add(saveButton);
+				this.add(loadButton);
 			}
 
 		// Puts all the crap from WindowBuilder, into here.
@@ -75,6 +83,14 @@ public class ChatPanel extends JPanel
 				baseLayout.putConstraint(SpringLayout.WEST, sendTweetButton, 10, SpringLayout.WEST, this);
 				baseLayout.putConstraint(SpringLayout.SOUTH, sendTweetButton, -10, SpringLayout.SOUTH, this);
 				baseLayout.putConstraint(SpringLayout.EAST, submitButton, -20, SpringLayout.EAST, this);
+				baseLayout.putConstraint(SpringLayout.NORTH, analyzeTwitterButton, 0, SpringLayout.NORTH, sendTweetButton);
+				baseLayout.putConstraint(SpringLayout.WEST, analyzeTwitterButton, 6, SpringLayout.EAST, sendTweetButton);
+				baseLayout.putConstraint(SpringLayout.EAST, analyzeTwitterButton, 180, SpringLayout.EAST, sendTweetButton);
+				baseLayout.putConstraint(SpringLayout.NORTH, loadButton, 0, SpringLayout.NORTH, sendTweetButton);
+				baseLayout.putConstraint(SpringLayout.EAST, loadButton, 0, SpringLayout.EAST, this);
+				baseLayout.putConstraint(SpringLayout.NORTH, saveButton, 0, SpringLayout.NORTH, sendTweetButton);
+				baseLayout.putConstraint(SpringLayout.WEST, saveButton, 6, SpringLayout.EAST, analyzeTwitterButton);
+				baseLayout.putConstraint(SpringLayout.EAST, sendTweetButton, 108, SpringLayout.WEST, this);
 			}
 
 		// Sets up the listeners
@@ -91,25 +107,43 @@ public class ChatPanel extends JPanel
 								typingField.setText(""); // clear user field
 							}
 					});
-				
+
 				sendTweetButton.addActionListener(new ActionListener()
 					{
 						public void actionPerformed(ActionEvent click)
-						{
-							baseController.sendTweet("StaticVoid_");
-						}
+							{
+								baseController.sendTweet("StaticVoid_");
+							}
 					});
-		
-		analyzeTwitterButton.addActionListener(new ActionListener()
-			{
-				public void actionPerformed(ActionEvent click)
-				{
-					String user = typingField.getText();
-					String results = baseController.analyze(user);
-					chatArea.setText(results);
-				}
-			});
-		}
+
+				analyzeTwitterButton.addActionListener(new ActionListener()
+					{
+						public void actionPerformed(ActionEvent click)
+							{
+								String user = typingField.getText();
+								String results = baseController.analyze(user);
+								chatArea.setText(results);
+							}
+					});
+
+				saveButton.addActionListener(new ActionListener()
+					{
+						public void actionPerformed(ActionEvent click)
+							{
+								String file = IOController.saveFile(chatArea.getText());
+								promptLabel.setText(file);
+							}
+					});
+
+				loadButton.addActionListener(new ActionListener()
+					{
+						public void actionPerformed(ActionEvent click)
+							{
+								String loadedText = IOController.readTextFromFile(promptLabel.getText());
+								chatArea.setText(loadedText);
+							}
+					});
+			}
 
 		/**
 		 * Returns what is inside the TextField
