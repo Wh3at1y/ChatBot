@@ -3,7 +3,14 @@ package chat.model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
-import twitter4j.*;
+import twitter4j.GeoLocation;
+import twitter4j.Paging;
+import twitter4j.Query;
+import twitter4j.QueryResult;
+import twitter4j.Status;
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
+import twitter4j.TwitterFactory;
 import chat.controller.ChatController;
 
 public class CTECTwitter
